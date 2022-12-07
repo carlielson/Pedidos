@@ -48,6 +48,18 @@ namespace Pedidos.Sevices
             return true;
         }
 
+        public List<PedidoDTO> GetAll()
+        {
+            var list = new List<PedidoDTO>();
+            var pedido = _pedidoRepository.GetAll();
+            foreach (var item in pedido)
+            {
+                var pedidoDto = GetByIdPedido(item.Id);
+                list.Add(pedidoDto);
+            }
+            return list;
+        }
+
         public Pedido GetById(int idPedido)
         {
             var pedido = _pedidoRepository.GetById(idPedido);
@@ -106,6 +118,7 @@ namespace Pedidos.Sevices
                         Quantidade = it.Quantidade,
                     };
                     _itemPedidoRepository.Update(itemPedido);
+                    
                 }
                 return true;
 

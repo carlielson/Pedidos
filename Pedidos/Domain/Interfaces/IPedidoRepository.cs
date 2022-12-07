@@ -9,5 +9,6 @@ namespace Pedidos.Domain.Interfaces
         public bool Update(Pedido item);
         public Pedido GetById(int id);
         public IEnumerable<Pedido> GetByEmail(string email);
+        public IEnumerable<Pedido> GetAll();
     }
 }

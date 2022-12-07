@@ -28,6 +28,12 @@ namespace Pedidos.Controllers
             return Ok(_pedidoService.GetByIdPedido(id));
         }
 
+        [HttpGet]
+        public ActionResult<PedidoDTO> GetAll()
+        {
+            return Ok(_pedidoService.GetAll());
+        }
+
         // POST api/<PedidosController>
         [HttpPost]
         public ActionResult<bool> Post([FromBody] PedidoModel pedido)

@@ -21,7 +21,7 @@ namespace Pedidos.Repositories
         public bool Delete(int id)
         {
             var pedido = _pedidosContext.Pedidos.FirstOrDefault(x => x.Id == id);
-            if (pedido == null)
+            if (pedido != null)
             {
                 _pedidosContext.Pedidos.Remove(pedido);
                 _pedidosContext.SaveChanges();
@@ -43,9 +43,8 @@ namespace Pedidos.Repositories
         public bool Update(Pedido item)
         {
             var pedido = _pedidosContext.Pedidos.FirstOrDefault(x => x.Id == item.Id);
-            if (pedido == null)
+            if (pedido != null)
             {
-                pedido.DataCriacao = DateTime.Now;
                 pedido.Pago = item.Pago;
                 pedido.EmailCliente = item.EmailCliente;
                 pedido.NomeCliente = item.NomeCliente;
@@ -54,6 +53,11 @@ namespace Pedidos.Repositories
                 return true;
             }
             return false;
+        }
+
+        public IEnumerable<Pedido> GetAll()
+        {
+            return _pedidosContext.Pedidos;
         }
     }
 }

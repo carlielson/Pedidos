@@ -55,10 +55,11 @@ namespace Pedidos.Repositories
         public bool Update(ItemPedido item)
         {
             var itemPedido = _pedidosContext.ItensPedidos.FirstOrDefault(x => x.Id == item.Id);
-            if (itemPedido == null)
+            if (itemPedido != null)
             {
                 itemPedido.IdPedido = item.IdPedido;
                 itemPedido.IdProduto = item.IdProduto;
+                itemPedido.Quantidade = item.Quantidade;
                 _pedidosContext.ItensPedidos.Update(itemPedido);
                 _pedidosContext.SaveChanges();
                 return true;

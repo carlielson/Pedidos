@@ -11,5 +11,6 @@ namespace Pedidos.Sevices
         public bool Delete(int idPedido);
         public Pedido GetById(int idPedido);
         PedidoDTO GetByIdPedido(int idPedido);
+        List<PedidoDTO> GetAll();
     }
 }
